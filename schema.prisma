@@ -1,0 +1,24 @@
+datasource db {
+  // could be postgresql or mysql
+  provider = "postgresql"
+  url      = "postgresql://postgres:123456@localhost:5432/mydb"
+}
+
+generator db {
+  provider             = "prisma-client-py"
+  interface            = "asyncio"
+  recursive_type_depth = 5
+}
+
+model Outfit {
+  id         String   @id @default(cuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  published  Boolean
+  gender     String
+  weather    String
+  outherwear String
+  tops       String
+  bottoms    String
+  shoes      String
+}
